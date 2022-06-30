@@ -1,0 +1,44 @@
+/ 1) Write a function named makeQuestion, that takes three arguments: two operands and an operator, 
+// and returns a string with the question "What is [oprd1] [opr] [oprd2]?".
+
+function makeQuestion(oprd1, opr, oprd2) {
+    let question = `What is ${oprd1} ${opr} ${oprd2}?`;
+    return question;
+}
+
+console.log(makeQuestion(1, '+', 2));
+
+
+// 2) Make an object. Assign 3 different keys to it by 3 different ways that we have learned;
+
+let person = {};
+person.name = 'Tatev';
+let newKey = 'age';
+person[newKey] = 22;
+person['Plays instrument'] = 'Piano';
+
+console.log(person);
+
+
+
+// 3) Find the odd one out in the provided array. All array elements are equal, except one.
+// Your function must return this odd one out. ->   ["a", "a", "b", "a"] -> // 'b';
+
+function findOdd(array) {
+    let obj = {};
+    for (let item of array) {
+        if (obj[item]) {
+            obj[item] += 1;
+        } else {
+            obj[item] = 1;
+        }
+    }
+
+    for (let key in obj) {
+        if (obj[key] === 1) {
+            return key;
+        }
+    }
+}
+
+console.log(findOdd(["b", "b", "c", "a", 'a']));
