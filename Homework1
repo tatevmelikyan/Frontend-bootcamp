@@ -42,3 +42,28 @@ function findOdd(array) {
 }
 
 console.log(findOdd(["b", "b", "c", "a", 'a']));
+
+
+
+
+//////////////////////////////
+
+
+function getTotalPayments(array) {
+    let totalPayments = [];
+    let obj = {};
+    for (let item of array) {
+        let {studentId} = item;
+        if (obj[studentId]) {
+            obj[studentId].totalPayments += item.paidAmount;
+        } else {
+            // const {year} = item;//const year = item.year;
+             const {year,paidAmount,...rest} = item;
+            obj[studentId] = {...rest,totalPayments: paidAmount}
+        }
+    }
+
+    return Object.values(obj);
+}
+
+console.log(getTotalPayments(payments));
