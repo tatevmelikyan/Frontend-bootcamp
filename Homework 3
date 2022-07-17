@@ -1,0 +1,270 @@
+//1) 
+// as you can see toyota2 does not have a logModel function
+// borrow that function from toyota1 and call it, so it console.logs "Toyota Rav4"
+
+// const toyota1 = {
+//     model: 'Toyota',
+//     type: 'Camry',
+//     logModel(){
+//         console.log(this.model, this.type);
+//     }
+// }
+
+// const toyota2 = {
+//     model: 'Toyota',
+//     type: 'Rav4',
+// }
+
+// const foo = toyota1.logModel;
+// foo.call(toyota2);
+
+
+
+//2) 
+// The following code does not work turn it into working code
+
+// const flights = {
+
+//     flights: [],
+
+//     priorityFlights: [],
+
+//     scheduleFlight(flight){
+//         this.flights.push(flight);
+//     },
+
+//     removeFlight(flight){
+//         this.flights = this.flights.filter(flightFilter.bind(this));
+//         function flightFilter(f){
+//             if (flight === f){
+//                 return this.priorityFlights.includes(flight);
+//             }
+//             return true
+//         }
+//     },
+
+//     makePriorityFlight(flight){
+//         this.priorityFlights.push(flight);
+//     }
+
+// }
+
+
+// flights.scheduleFlight('1');
+
+// flights.makePriorityFlight('1');
+
+// flights.removeFlight('1')
+
+// console.log(flights.flights);
+
+
+
+
+//3)
+// CarConstructor creates cars but what if someone decides to call it without new keyword,
+// write a logic inside the CarConstructor function so it checks if the CarConstructor is called without
+// new keyword it logs "please call me with new keyword" if not it creates a car
+
+
+// function CarConstructor(model, year) {
+//     if(new.target) {
+//     this.mode = model;
+//     this.year = year;
+//     } else return 'Please call me with new keyword.'
+// }
+
+// const obj =  CarConstructor('BMV','2000')
+// console.log(obj);
+
+
+
+
+// 4) 
+// make a new array out of objArr so that every object has the same logName function that is declared below
+// use logName function do not create your own
+
+
+// const objArr = [{ name: '1' }, { name: '2' }, { name: '3' }, { name: '4' }]
+
+// function logName(){
+//     console.log(this.name);
+// }
+
+// function addFunction(arr) {
+// const result = arr.map(object => {
+//     object.logName = logName;
+//     return object;
+// });
+// return result;
+// }
+
+// console.log(addFunction(objArr)) // ?
+
+
+
+//5) 
+// use foreach method and use arrayOfObjectNames function to log the following objects names from the array;
+
+
+//const arrayOfObjectNames = [{ name: '1' }, { name: '2' }, { name: '3' }]
+
+// function logArrayObjectNames(arr){
+//    return arr.forEach(object => {
+//     object.logName = function () { 
+//         //console.log(this.name); 
+//         return object
+//     };
+//     object.logName()
+// });
+// }
+// logArrayObjectNames(arrayOfObjectNames);
+/////
+// const arrayOfObjectNames = [{ name: '1' }, { name: '2' }, { name: '3' }]
+
+// function logArrayObjectNames(){
+//     console.log(this.name);
+// }
+// arrayOfObjectNames.forEach(object => {
+//     logArrayObjectNames.call(object);
+// })
+
+
+//6)
+// for above mentioned arrayOfObjectNames Return an array of functions that when called would log each objects name
+// use Array.map and logArrayObjectNames function
+
+
+// const mappedFunc = arrayOfObjectNames.map( (item) => {
+//     return logArrayObjectNames.bind(item)
+// } );
+
+// mappedFunc.forEach(i => i()); // this would print 1, 2, 3
+
+
+
+
+// 7)
+
+// function CreateCar(id, model, year, color, driveTrain) {
+//     this.id = id;
+//     this.model = model;
+//     this.year = year;
+//     this.color = color;
+//     this.driveTrain = driveTrain;
+// }
+
+// const inventory = {
+
+//     cars: [],
+
+//     addCar(car) {
+//         this.cars.push(car);
+//     },
+
+//     removeCar(id) {
+//         let index = this.cars.findIndex(object => object.id === id);
+//         this.cars.splice(index, 1);
+//     },
+
+//     listCars() {
+//         for (let car of this.cars) {
+//             console.log(car)
+//         }
+//     },
+
+//     listCarsByConditionCallback(conditionCallback) {
+//         for(let item of this.cars) {
+//             if(conditionCallback(item)) console.log(item);
+//         };
+//     },
+
+// }
+
+
+// inventory.addCar(new CreateCar(1, 'Toyota', '1996', 'red', '4x4'));
+// inventory.addCar(new CreateCar(2, 'Mercedes', '2000', 'white', 'rear wheel drive'));
+// inventory.addCar(new CreateCar(3, 'BMW', '2020', 'black', 'rear wheel drive'));
+// inventory.removeCar(2);
+// inventory.listCars();
+// inventory.listCarsByConditionCallback( (car) => car.model === 'BMW' && car.year === '2020' );
+
+
+
+// 8) 
+// Create a constructor function called Song. Song should take in two arguments, title and artist, which should both be
+// added as properties when the Song constructor function is used. The Song function should also have a method called
+// play. When called, the play function should console.log the name of that specific song preceded by the
+// word 'Playing:'.
+// NOTE that play function should be the same for all instances of the Song constructor
+
+
+// function Song(title,artist) {
+//     this.title = title;
+//     this.artist = artist;
+//     this.play = function () {
+//         console.log(`Playing: ${title}`);
+//     };
+// } 
+
+// const songObj = new Song("Skyscraper","Demi Lovato");
+// songObj.play();
+
+
+
+
+
+// 9)  
+// 1. Create a folder called Workshop_4 make a git repository inside.
+//
+// 2. without navigating to a different branch create a branch named x_branch
+
+
+// 1. mkdir Workshop_4 > cd Workshop_4 > git init 
+
+// 2. git commit --allow-empty -m "Empty-Commit" > git branch x_branch
+
+
+
+// 10) 
+// 3. create a branch called rename_me
+// 4. create a branch called delete_me
+// 5. rename the branch rename_me to renamed_branch
+// 6. delete the branch delete_me
+
+
+// 3. git branch rename_me
+// 4. git branch delete_me
+// 5. git checkout rename_me > git branch -m renamed_branch
+// 6. git branch -d delete_me
+
+
+//11)
+// with a few words explain why this is happening Armenian or English.
+
+
+// const checkKnow = {
+//     surname: 'surname',
+//     name: 'checkKnow',
+//     foo: {
+//         name: 'foo',
+//         logName(){
+//             console.log(this.surname);
+//         }
+//     },
+//     boo(){
+//         const obj = {
+//             name: 'boo method',
+//             check: () => {
+//                 console.log(this.name);
+//             }
+//         }
+//         obj.check();
+//     }
+// }
+
+// checkKnow.foo.logName(); // Returns undefined because the 'this' of the 'logname' method is the foo object which has no property called surname so 'this.surname' is undefined. 
+
+// checkKnow.boo(); // Returns 'checkKnow' because the 'boo' method creates a new object which has a method 
+// called 'check' which is an arrow function so it's 'this' is the same 'this' of the 'boo' method 
+// which is the 'checknow' object and it's 'name' is 'checknow'.
